@@ -1,4 +1,8 @@
 
+# FastAPI Readme
+uvicorn api.main:app --reload
+
+
 # Custom WebSearch Agent with LangGraph
 
 ### Watch the Tutorial:

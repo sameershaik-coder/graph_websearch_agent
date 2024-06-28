@@ -17,7 +17,7 @@ from prompts.prompts import (
 )
 from utils.helper_functions import get_current_utc_datetime, check_for_content
 from states.state import AgentGraphState
-
+from utils import file
 class Agent:
     def __init__(self, state: AgentGraphState, model=None, server=None, temperature=0, model_endpoint=None, stop=None, guided_json=None):
         self.state = state
@@ -209,6 +209,9 @@ class FinalReportAgent(Agent):
         response = final_response_value.content
 
         print(colored(f"Final Report 📝: {response}", 'blue'))
+        result={}
+        result["final_report"] = response
+        file.write_dict_to_json(result)
         self.update_state("final_reports", response)
         return self.state
 
